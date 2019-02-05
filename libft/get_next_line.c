@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 10:39:14 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/01/04 17:38:40 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/02/05 18:14:18 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int				get_next_line(const int fd, char **line)
 	char				*tmp;
 	ssize_t				ret;
 
-	if (fd < 0 || BUFF_SIZE <= 0 || BUFF_SIZE > 2147483647 ||
-			read(fd, &tmp, 0) < 0 || line == NULL || fd > 4096 || fd < 0)
+	if (fd < 0 || BUFF_SIZE <= 0 || BUFF_SIZE > 2147483647
+			|| read(fd, &tmp, 0) < 0 || line == NULL || fd > 4096 || fd < 0)
 		return (-1);
 	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
 	{
