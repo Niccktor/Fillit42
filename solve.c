@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 18:33:16 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/02/05 18:17:25 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/02/05 18:45:44 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_solve(t_list *lst)
 
 	size = ft_high_sqrt(ft_lstcount(lst) * 4);
 	map = ft_new_map(size);
+	if (!map)
+		return (-1);
 	while (ft_solve_next(map, lst) == -1)
 	{
 		size++;
