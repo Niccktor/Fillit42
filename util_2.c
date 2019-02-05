@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 15:14:41 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/02/04 19:31:48 by msaubin          ###   ########.fr       */
+/*   Updated: 2019/02/05 18:50:36 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_map		*ft_new_map(char size)
 	int		j;
 
 	new = (t_map *)ft_memalloc(sizeof(t_map));
+	if (!new)
+		return (NULL);
 	new->size = size;
 	new->array = (char **)ft_memalloc(size * sizeof(char *));
 	i = 0;
@@ -41,6 +43,8 @@ t_tetri		*ft_new_tetri(char **tetri, int height, int width)
 	t_tetri *new;
 
 	new = (t_tetri*)(ft_memalloc(sizeof(t_tetri)));
+	if (!new)
+		return (NULL);
 	new->height = height;
 	new->width = width;
 	new->tetri = tetri;
@@ -53,6 +57,8 @@ char		**ft_new_tab_2d(int height, int width)
 	int		i;
 
 	new = (char **)ft_memalloc(height * sizeof(char *));
+	if (!new)
+		return (NULL);
 	i = 0;
 	while (i < height)
 	{
