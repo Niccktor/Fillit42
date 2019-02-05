@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 18:33:16 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/02/04 20:21:28 by msaubin          ###   ########.fr       */
+/*   Updated: 2019/02/05 18:17:25 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int		ft_put_tetri(t_map *map, t_tetri *atetri, int i_put, int j_put)
 		j = 0;
 		while (j < atetri->width)
 		{
-			if (atetri->tetri[i][j] != '.' && \
-					map->array[i + i_put][j + j_put] == '.')
+			if (atetri->tetri[i][j] != '.'
+					&& map->array[i + i_put][j + j_put] == '.')
 				map->array[i + i_put][j + j_put] = atetri->tetri[i][j];
 			else if (atetri->tetri[i][j] != '.')
 				return (-1);
