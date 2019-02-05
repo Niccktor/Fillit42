@@ -6,7 +6,7 @@
 /*   By: msaubin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 12:57:49 by msaubin           #+#    #+#             */
-/*   Updated: 2019/02/04 19:32:55 by msaubin          ###   ########.fr       */
+/*   Updated: 2019/02/05 18:42:55 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*ft_read_tetri(int fd)
 	buf = ft_strnew(21);
 	list = NULL;
 	tetri_nb = 0;
-	while ((ret = read(fd, buf, 21)) >= 20)
+	while ((ret = read(fd, buf, 21)) >= 20 && buf)
 	{
 		if (ft_check_input(buf, ret) == -1
 				|| (tetri = ft_convert_to_tetri(buf, tetri_nb++)) == NULL)
@@ -34,9 +34,9 @@ t_list	*ft_read_tetri(int fd)
 		ft_lstadd(&list, ft_lstnew(tetri, sizeof(t_tetri)));
 		ft_memdel((void **)&tetri);
 	}
-	ft_memdel((void **)&buf);
-	if (ret != 0 || tetri_nb > 26)
+	if (ret != 0 || tetri_nb > 26 || !buf)
 		return (ft_free_list(list));
+	ft_memdel((void **)&buf);
 	ft_lstrev(&list);
 	return (list);
 }
@@ -112,6 +112,8 @@ int		ft_last_check(int fd)
 	char		*buf;
 
 	buf = ft_strnew(26 * 21);
+	if (!buf)
+		return (-1);
 	ret = read(fd, buf, 26 * 21);
 	if ((ret + 1) % 21 == 0)
 	{
