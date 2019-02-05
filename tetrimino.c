@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 20:58:26 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/02/05 18:18:20 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/02/05 18:47:07 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_tetri		*ft_get_tetrimino(char *str, int tetri_nb, int *len_tetri)
 
 	tetrimino = ft_new_tab_2d((len_tetri[1] - len_tetri[0]) + 1,
 			(len_tetri[3] - len_tetri[2]) + 1);
+	if (!tetrimino)
+		return (NULL);
 	i = 0;
 	while ((len_tetri[0] + i) <= len_tetri[1])
 	{
